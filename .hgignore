@@ -1,0 +1,15 @@
+# use glob syntax.
+syntax: glob
+gensrc/*
+data/*
+build/*
+out/*
+
+.gradle/*
+.git/*
+
+# Idea files
+.idea/*
+*.iml
+*.ipr
+*.iws
