@@ -4,6 +4,7 @@ gensrc/*
 data/*
 build/*
 out/*
+data/*
 
 .gradle/*
 .git/*
