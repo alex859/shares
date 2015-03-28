@@ -15,6 +15,7 @@ public class ShareData
      */
     private String sedol;
     private String url;
+    private String isin;
 
     public String getSymbol()
     {
@@ -56,6 +57,16 @@ public class ShareData
         this.url = url;
     }
 
+    public String getIsin()
+    {
+        return isin;
+    }
+
+    public void setIsin(final String isin)
+    {
+        this.isin = isin;
+    }
+
     @Override
     public String toString()
     {
@@ -81,7 +92,7 @@ public class ShareData
 
         final ShareData shareData = (ShareData) o;
 
-        if (!sedol.equals(shareData.sedol))
+        if (!isin.equals(shareData.isin))
         {
             return false;
         }
@@ -92,6 +103,6 @@ public class ShareData
     @Override
     public int hashCode()
     {
-        return sedol.hashCode();
+        return isin.hashCode();
     }
 }

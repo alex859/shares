@@ -1,0 +1,11 @@
+hl:
+  baseUrl: http://www.hl.co.uk/
+  marketUrl: shares/stock-market-summary/ftse-all-share
+marketsToAnalyse:
+  - FTSE All Share
+  - FTSE AIM 100
+#  interestingTabs:
+#    - broker-forecast
+#    - director-deals
+#    - financial-statements-and-reports
+#    - dividends

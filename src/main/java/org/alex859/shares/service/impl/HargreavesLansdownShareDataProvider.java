@@ -1,43 +1,62 @@
-package org.alex859.shares;
+package org.alex859.shares.service.impl;
 
 import org.alex859.shares.model.ShareData;
+import org.alex859.shares.service.ShareDataProvider;
 import org.apache.http.client.fluent.Request;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
  * @author alex859 (alessandro.ciccimarra@gmail.com).
  */
-public class HargreavesLansdownScraper
+@Service
+public class HargreavesLansdownShareDataProvider implements ShareDataProvider
 {
-    private static final String BASE_URL = "http://www.hl.co.uk/";
-    private static final String URL = BASE_URL + "shares/stock-market-summary/ftse-all-share";
-    private static final String BASE_DIR = "data/";
-    private final Set<String> marketsToAnalyse;
-    private final Set<String> interestingTabs;
+    private final static Logger LOGGER = LoggerFactory.getLogger(HargreavesLansdownShareDataProvider.class);
 
-    public HargreavesLansdownScraper()
+    private String baseUrl;
+    private String marketUrl;
+    private List<String> marketsToAnalyse;
+    private List<String> interestingTabs;
+
+    @Override
+    public void downloadAll()
     {
-        marketsToAnalyse = new HashSet<>();
-        marketsToAnalyse.add("FTSE All Share");
-        marketsToAnalyse.add("FTSE AIM 100");
+        final Document mainPage = readHtml(marketUrl);
+        final Set<ShareData> shareData = new HashSet<>();
+        mainPage.select("#section-navigation > ul > li:nth-child(3) > ul > li > a")
+                .stream()
+                .filter(liTag -> marketsToAnalyse.contains(liTag.text()))
+                .map(aTag -> processMarketPage(aTag.attr("href")))
+                .forEach(shareData::addAll);
 
-        interestingTabs = new HashSet<>();
-        interestingTabs.add("broker-forecast");
-        interestingTabs.add("director-deals");
-        interestingTabs.add("financial-statements-and-reports");
-        interestingTabs.add("dividends");
-        interestingTabs.add("company-information");
+        shareData
+                .stream()
+                .parallel()
+                .forEach(this::downloadShareData);
 
+        LOGGER.info("Total share processed: {}", shareData.size());
+    }
+
+    @Override
+    public ShareData get(final String isin)
+    {
+        LOGGER.info("CICCO");
+        return null;
     }
 
     /**
@@ -49,13 +68,13 @@ public class HargreavesLansdownScraper
     {
         final ShareData shareData = new ShareData();
         shareData.setName(shareDataLink.text());
-        shareData.setUrl(BASE_URL + shareDataLink.attr("href"));
+        shareData.setUrl(baseUrl + shareDataLink.attr("href"));
         if (shareData.getUrl() != null)
         {
             final String[] splitted = shareData.getUrl().split("/");
             shareData.setSedol(splitted[splitted.length-1]);
         }
-        // System.out.println(shareData);
+
         return shareData;
     }
 
@@ -114,13 +133,12 @@ public class HargreavesLansdownScraper
             }
             else
             {
-                System.out.println("Unable to save: " + shareData.getSedol());
+                LOGGER.warn("Unable to save: {}", shareData.getSedol());
             }
         }
         catch (final IOException e)
         {
-            System.out.println("Error creating file");
-            e.printStackTrace();
+            LOGGER.error("Error creating file", e);
         }
     }
 
@@ -133,27 +151,8 @@ public class HargreavesLansdownScraper
         }
         catch (IOException e)
         {
-            System.out.println("Error writing file");
-            e.printStackTrace();
+            LOGGER.error("Error writing file", e);
         }
-    }
-
-    public void exec()
-    {
-        final Document mainPage = readHtml(URL);
-        final Set<ShareData> shareData = new HashSet<>();
-        mainPage.select("#section-navigation > ul > li:nth-child(3) > ul > li > a")
-                .stream()
-                .filter(liTag -> marketsToAnalyse.contains(liTag.text()))
-                .map(aTag -> processMarketPage(aTag.attr("href")))
-                .forEach(shareData::addAll);
-
-        shareData
-                .stream()
-                .parallel()
-                .forEach(this::downloadShareData);
-
-        System.out.println(shareData.size());
     }
 
     private String getBaseUrl(final String url)
@@ -182,22 +181,37 @@ public class HargreavesLansdownScraper
     {
         try
         {
-            // System.out.println("*** Reading URL: " + url);
             return Request.Get(url).execute().returnContent().asString();
-            // System.out.println("*** Done URL: " + url);
         }
         catch (final IOException e)
         {
-            System.out.println("Error reading url: " + url);
-            e.printStackTrace();
+            LOGGER.error("Error reading url: ", url, e);
         }
 
         return null;
     }
 
-    public static void main(String[] args) throws IOException
+    @Value("${hl.baseUrl}")
+    public void setBaseUrl(final String baseUrl)
     {
-        new HargreavesLansdownScraper().exec();
+        this.baseUrl = baseUrl;
+    }
 
+    @Value("${hl.marketUrl}")
+    public void setMarketUrl(final String marketUrl)
+    {
+        this.marketUrl = marketUrl;
+    }
+
+    @Value("${marketsToAnalyse}")
+    public void setMarketsToAnalyse(final List<String> marketsToAnalyse)
+    {
+        this.marketsToAnalyse = marketsToAnalyse;
+    }
+
+    @Value("${hl.interestingTabs}")
+    public void setInterestingTabs(final List<String> interestingTabs)
+    {
+        this.interestingTabs = interestingTabs;
     }
 }
