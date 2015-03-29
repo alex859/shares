@@ -1,14 +1,14 @@
 package org.alex859.shares.service.impl;
 
 import org.alex859.shares.model.ShareData;
-import org.alex859.shares.service.ShareDataProvider;
+import org.alex859.shares.service.ShareDataDownloader;
 import org.apache.http.client.fluent.Request;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -24,9 +24,10 @@ import java.util.stream.Collectors;
  * @author alex859 (alessandro.ciccimarra@gmail.com).
  */
 @Service
-public class HargreavesLansdownShareDataProvider implements ShareDataProvider
+@ConfigurationProperties(prefix = "hl")
+public class HargreavesLansdownShareDataDownloader implements ShareDataDownloader
 {
-    private final static Logger LOGGER = LoggerFactory.getLogger(HargreavesLansdownShareDataProvider.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(HargreavesLansdownShareDataDownloader.class);
 
     private String baseUrl;
     private String marketUrl;
@@ -55,7 +56,7 @@ public class HargreavesLansdownShareDataProvider implements ShareDataProvider
     @Override
     public ShareData get(final String isin)
     {
-        LOGGER.info("CICCO");
+        LOGGER.info(interestingTabs.toString());
         return null;
     }
 
@@ -191,27 +192,35 @@ public class HargreavesLansdownShareDataProvider implements ShareDataProvider
         return null;
     }
 
-    @Value("${hl.baseUrl}")
-    public void setBaseUrl(final String baseUrl)
-    {
+    public String getBaseUrl() {
+        return baseUrl;
+    }
+
+    public void setBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
     }
 
-    @Value("${hl.marketUrl}")
-    public void setMarketUrl(final String marketUrl)
-    {
+    public String getMarketUrl() {
+        return marketUrl;
+    }
+
+    public void setMarketUrl(String marketUrl) {
         this.marketUrl = marketUrl;
     }
 
-    @Value("${marketsToAnalyse}")
-    public void setMarketsToAnalyse(final List<String> marketsToAnalyse)
-    {
+    public List<String> getMarketsToAnalyse() {
+        return marketsToAnalyse;
+    }
+
+    public void setMarketsToAnalyse(List<String> marketsToAnalyse) {
         this.marketsToAnalyse = marketsToAnalyse;
     }
 
-    @Value("${hl.interestingTabs}")
-    public void setInterestingTabs(final List<String> interestingTabs)
-    {
+    public List<String> getInterestingTabs() {
+        return interestingTabs;
+    }
+
+    public void setInterestingTabs(List<String> interestingTabs) {
         this.interestingTabs = interestingTabs;
     }
 }

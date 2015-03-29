@@ -5,7 +5,7 @@ import org.alex859.shares.model.ShareData;
 /**
  * @author alex859 (alessandro.ciccimarra@gmail.com).
  */
-public interface ShareDataProvider
+public interface ShareDataDownloader
 {
     void downloadAll();
     ShareData get(String isin);
