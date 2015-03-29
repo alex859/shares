@@ -25,9 +25,9 @@ import java.util.stream.Collectors;
  */
 @Service
 @ConfigurationProperties(prefix = "hl")
-public class HargreavesLansdownShareDataDownloader implements ShareDataDownloader
+public class HargreavesLansdownDownloader implements ShareDataDownloader
 {
-    private final static Logger LOGGER = LoggerFactory.getLogger(HargreavesLansdownShareDataDownloader.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(HargreavesLansdownDownloader.class);
 
     private String baseUrl;
     private String marketUrl;
