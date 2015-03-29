@@ -1,6 +1,7 @@
 hl:
   baseUrl: http://www.hl.co.uk/
   marketUrl: shares/stock-market-summary/ftse-all-share
+  destinationFolder: data
   marketsToAnalyse:
     - FTSE All Share
     - FTSE AIM 100

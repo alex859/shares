@@ -2,12 +2,14 @@ package org.alex859.shares.service.impl;
 
 import org.alex859.shares.model.ShareData;
 import org.alex859.shares.service.ShareDataDownloader;
+import org.alex859.shares.service.impl.util.DownloaderConfiguration;
 import org.apache.http.client.fluent.Request;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +18,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * @author alex859 (alessandro.ciccimarra@gmail.com).
+ * @author alex859 <alessandro.ciccimarra@gmail.com>.
  */
 @Service
 @ConfigurationProperties(prefix = "hl")
@@ -29,19 +30,22 @@ public class HargreavesLansdownDownloader implements ShareDataDownloader
 {
     private final static Logger LOGGER = LoggerFactory.getLogger(HargreavesLansdownDownloader.class);
 
-    private String baseUrl;
-    private String marketUrl;
-    private List<String> marketsToAnalyse;
-    private List<String> interestingTabs;
+    private DownloaderConfiguration configuration;
+
+    @Autowired
+    public HargreavesLansdownDownloader(final DownloaderConfiguration configuration)
+    {
+        this.configuration = configuration;
+    }
 
     @Override
     public void downloadAll()
     {
-        final Document mainPage = readHtml(marketUrl);
+        final Document mainPage = readHtml(configuration.getMarketUrl());
         final Set<ShareData> shareData = new HashSet<>();
         mainPage.select("#section-navigation > ul > li:nth-child(3) > ul > li > a")
                 .stream()
-                .filter(liTag -> marketsToAnalyse.contains(liTag.text()))
+                .filter(liTag -> configuration.getMarketsToAnalyse().contains(liTag.text()))
                 .map(aTag -> processMarketPage(aTag.attr("href")))
                 .forEach(shareData::addAll);
 
@@ -56,7 +60,6 @@ public class HargreavesLansdownDownloader implements ShareDataDownloader
     @Override
     public ShareData get(final String isin)
     {
-        LOGGER.info(interestingTabs.toString());
         return null;
     }
 
@@ -69,7 +72,7 @@ public class HargreavesLansdownDownloader implements ShareDataDownloader
     {
         final ShareData shareData = new ShareData();
         shareData.setName(shareDataLink.text());
-        shareData.setUrl(baseUrl + shareDataLink.attr("href"));
+        shareData.setUrl(configuration.getBaseUrl() + shareDataLink.attr("href"));
         if (shareData.getUrl() != null)
         {
             final String[] splitted = shareData.getUrl().split("/");
@@ -117,7 +120,7 @@ public class HargreavesLansdownDownloader implements ShareDataDownloader
     {
         try
         {
-            final Path filePath = Paths.get("data/" + shareData.getSedol() + "/main");
+            final Path filePath = Paths.get(configuration.getDestinationFolder() + "/" + shareData.getSedol() + "/main");
             Files.createDirectories(filePath.getParent());
             final Document document = readHtml(shareData.getUrl());
             if (document != null)
@@ -129,7 +132,7 @@ public class HargreavesLansdownDownloader implements ShareDataDownloader
                         .stream()
                         .parallel()
                         .map(a -> a.attr("href"))
-                        .filter(url -> interestingTabs.contains(getLastUrlPart(url)))
+                        .filter(url -> configuration.getInterestingTabs().contains(getLastUrlPart(url)))
                         .forEach(url -> getHtmlAndSave(url, filePath));
             }
             else
@@ -190,37 +193,5 @@ public class HargreavesLansdownDownloader implements ShareDataDownloader
         }
 
         return null;
-    }
-
-    public String getBaseUrl() {
-        return baseUrl;
-    }
-
-    public void setBaseUrl(String baseUrl) {
-        this.baseUrl = baseUrl;
-    }
-
-    public String getMarketUrl() {
-        return marketUrl;
-    }
-
-    public void setMarketUrl(String marketUrl) {
-        this.marketUrl = marketUrl;
-    }
-
-    public List<String> getMarketsToAnalyse() {
-        return marketsToAnalyse;
-    }
-
-    public void setMarketsToAnalyse(List<String> marketsToAnalyse) {
-        this.marketsToAnalyse = marketsToAnalyse;
-    }
-
-    public List<String> getInterestingTabs() {
-        return interestingTabs;
-    }
-
-    public void setInterestingTabs(List<String> interestingTabs) {
-        this.interestingTabs = interestingTabs;
     }
 }

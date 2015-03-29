@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author alex859 (alessandro.ciccimarra@gmail.com).
+ * @author alex859 <alessandro.ciccimarra@gmail.com>.
  */
 @EnableAutoConfiguration
 @EnableConfigurationProperties

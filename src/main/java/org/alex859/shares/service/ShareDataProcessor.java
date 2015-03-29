@@ -1,7 +1,7 @@
 package org.alex859.shares.service;
 
 /**
- * Created by alex859 on 29/03/15.
+ * @author alex859 <alessandro.ciccimarra@gmail.com>.
  */
 public interface ShareDataProcessor
 {

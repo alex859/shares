@@ -4,7 +4,7 @@ import com.google.common.base.MoreObjects;
 
 /**
  * Class to model data we have about a share
- * @author alex859 (alessandro.ciccimarra@gmail.com).
+ * @author alex859 <alessandro.ciccimarra@gmail.com>.
  */
 public class ShareData
 {
