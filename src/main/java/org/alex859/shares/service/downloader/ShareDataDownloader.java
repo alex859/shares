@@ -1,4 +1,4 @@
-package org.alex859.shares.service;
+package org.alex859.shares.service.downloader;
 
 import org.alex859.shares.model.ShareData;
 

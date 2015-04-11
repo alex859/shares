@@ -1,8 +1,8 @@
-package org.alex859.shares.service.impl;
+package org.alex859.shares.service.downloader.impl;
 
 import org.alex859.shares.model.ShareData;
-import org.alex859.shares.service.ShareDataDownloader;
-import org.alex859.shares.service.impl.util.DownloaderConfiguration;
+import org.alex859.shares.service.downloader.ShareDataDownloader;
+import org.alex859.shares.service.downloader.DownloaderConfiguration;
 import org.apache.http.client.fluent.Request;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

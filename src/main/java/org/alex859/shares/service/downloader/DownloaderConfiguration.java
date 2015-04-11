@@ -1,4 +1,4 @@
-package org.alex859.shares.service.impl.util;
+package org.alex859.shares.service.downloader;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
