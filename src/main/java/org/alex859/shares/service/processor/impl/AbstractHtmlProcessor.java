@@ -7,7 +7,6 @@ import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,7 +17,6 @@ import java.nio.file.Paths;
 /**
  * @author alex859 <alessandro.ciccimarra@gmail.com>.
  */
-@Service
 public abstract class AbstractHtmlProcessor implements ShareDataProcessor
 {
    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractHtmlProcessor.class);
@@ -52,7 +50,9 @@ public abstract class AbstractHtmlProcessor implements ShareDataProcessor
       {
          Files.list(folder)
 //                 .parallel()
-                 .forEach(path -> process(path.toFile()));
+                 .map(Path::toFile)
+                 .filter(this::canProcess)
+                 .forEach(this::process);
       } catch (final IOException e)
       {
          LOGGER.error("Error processing share data folder {}", folder, e);
@@ -79,5 +79,11 @@ public abstract class AbstractHtmlProcessor implements ShareDataProcessor
       internalProcess(doc);
    }
 
+   protected boolean canProcess(final File file)
+   {
+      return file.getName().contains(getSuffix());
+   }
+
    protected abstract void internalProcess(final Document doc);
+   protected abstract String getSuffix();
 }

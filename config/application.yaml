@@ -8,5 +8,7 @@ hl:
   interestingTabs:
     - broker-forecast
     - director-deals
-    - financial-statements-and-reports
+    - &financialTag financial-statements-and-reports
     - dividends
+  financial:
+    suffix: *financialTag
