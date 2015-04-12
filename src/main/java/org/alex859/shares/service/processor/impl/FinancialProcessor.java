@@ -144,7 +144,6 @@ public class FinancialProcessor extends AbstractHtmlProcessor
                                dateIndex[0]++;
                             });
                  });
-         System.out.println();
       }
    }
 
@@ -196,12 +195,21 @@ public class FinancialProcessor extends AbstractHtmlProcessor
          return null;
       }
 
+      if (str.contains("p"))
+      {
+         System.out.println();
+      }
+
       if (str.startsWith("c"))
       {
          str = str.replace("c", "").trim();
-         multiplier = ONE_PENCE;
       }
 
+      if (str.endsWith("p"))
+      {
+         str = str.replace("p", "").trim();
+         multiplier = ONE_PENCE;
+      }
       try
       {
          return new BigDecimal(NumberFormat.getInstance().parse(str).toString()).multiply(multiplier);
