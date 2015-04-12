@@ -10,5 +10,8 @@ hl:
     - director-deals
     - &financialTag financial-statements-and-reports
     - dividends
+    - &companyInformationTag company-information
   financial:
     suffix: *financialTag
+  companyInformation:
+    suffix: *companyInformationTag

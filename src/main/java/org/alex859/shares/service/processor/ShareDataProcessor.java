@@ -1,5 +1,7 @@
 package org.alex859.shares.service.processor;
 
+import org.alex859.shares.model.ShareData;
+
 import java.io.File;
 
 /**
@@ -7,7 +9,7 @@ import java.io.File;
  */
 public interface ShareDataProcessor
 {
-    void processAll();
-    void process(File file);
-    void process(String html);
+    void process(File file, ShareData shareData);
+    void process(String html, ShareData shareData);
+    boolean canProcess(File file);
 }
