@@ -19,7 +19,6 @@ public class FinancialData
    private BigDecimal minorityInterestsOtherEquities;
    private BigDecimal totalDividendPaid;
    private BigDecimal retainedProfit;
-   private BigDecimal retainedProfitForTheFinancialYear;
    private BigDecimal basicEps;
    private BigDecimal dilutedEps;
    private BigDecimal adjustedEps;
@@ -414,16 +413,6 @@ public class FinancialData
    public void setRetainedProfit(final BigDecimal retainedProfit)
    {
       this.retainedProfit = retainedProfit;
-   }
-
-   public BigDecimal getRetainedProfitForTheFinancialYear()
-   {
-      return retainedProfitForTheFinancialYear;
-   }
-
-   public void setRetainedProfitForTheFinancialYear(final BigDecimal retainedProfitForTheFinancialYear)
-   {
-      this.retainedProfitForTheFinancialYear = retainedProfitForTheFinancialYear;
    }
 
    public BigDecimal getRevenue()
