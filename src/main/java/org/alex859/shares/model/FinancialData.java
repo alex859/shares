@@ -1,6 +1,5 @@
 package org.alex859.shares.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -8,50 +7,50 @@ import java.util.Date;
  */
 public class FinancialData
 {
-   private BigDecimal revenue;
-   private BigDecimal operatingProfit;
-   private BigDecimal netInterest;
-   private BigDecimal profitBeforeTax;
-   private BigDecimal profitAfterTaxFromContinuingOperations;
-   private BigDecimal profitAfterTaxFromDiscontinuingOperations;
-   private BigDecimal profitForThePeriod;
-   private BigDecimal profitAttributableToEquityHoldersOfParentCompany;
-   private BigDecimal minorityInterestsOtherEquities;
-   private BigDecimal totalDividendPaid;
-   private BigDecimal retainedProfit;
-   private BigDecimal basicEps;
-   private BigDecimal dilutedEps;
-   private BigDecimal adjustedEps;
-   private BigDecimal dividendPerShare;
-   private BigDecimal propertyPlantAndEquipment;
-   private BigDecimal intangibleAssets;
-   private BigDecimal investmentProperties;
-   private BigDecimal investments;
-   private BigDecimal otherFinancialAssets;
-   private BigDecimal otherNonCurrentAssets;
-   private BigDecimal inventories;
-   private BigDecimal tradeAndOtherReceivables;
-   private BigDecimal cashAtBankAndInHand;
-   private BigDecimal currentAssetInvestments;
-   private BigDecimal otherCurrentAssets;
-   private BigDecimal otherAssets;
-   private BigDecimal totalAssets;
-   private BigDecimal currentBorrowings;
-   private BigDecimal otherCurrentLiabilities;
-   private BigDecimal netCurrentAssets;
-   private BigDecimal nonCurrentBorrowings;
-   private BigDecimal provisions;
-   private BigDecimal otherNonCurrentLiabilities;
-   private BigDecimal otherLiabilities;
-   private BigDecimal totalLiabilities;
-   private BigDecimal netAssets;
-   private BigDecimal shareCapital;
-   private BigDecimal sharePremiumAccount;
-   private BigDecimal otherReserves;
-   private BigDecimal retainedEarnings;
-   private BigDecimal shareholdersFunds;
-   private BigDecimal minorityInterestsOtherEquity;
-   private BigDecimal totalEquity;
+   private Double revenue;
+   private Double operatingProfit;
+   private Double netInterest;
+   private Double profitBeforeTax;
+   private Double profitAfterTaxFromContinuingOperations;
+   private Double profitAfterTaxFromDiscontinuingOperations;
+   private Double profitForThePeriod;
+   private Double profitAttributableToEquityHoldersOfParentCompany;
+   private Double minorityInterestsOtherEquities;
+   private Double totalDividendPaid;
+   private Double retainedProfit;
+   private Double basicEps;
+   private Double dilutedEps;
+   private Double adjustedEps;
+   private Double dividendPerShare;
+   private Double propertyPlantAndEquipment;
+   private Double intangibleAssets;
+   private Double investmentProperties;
+   private Double investments;
+   private Double otherFinancialAssets;
+   private Double otherNonCurrentAssets;
+   private Double inventories;
+   private Double tradeAndOtherReceivables;
+   private Double cashAtBankAndInHand;
+   private Double currentAssetInvestments;
+   private Double otherCurrentAssets;
+   private Double otherAssets;
+   private Double totalAssets;
+   private Double currentBorrowings;
+   private Double otherCurrentLiabilities;
+   private Double netCurrentAssets;
+   private Double nonCurrentBorrowings;
+   private Double provisions;
+   private Double otherNonCurrentLiabilities;
+   private Double otherLiabilities;
+   private Double totalLiabilities;
+   private Double netAssets;
+   private Double shareCapital;
+   private Double sharePremiumAccount;
+   private Double otherReserves;
+   private Double retainedEarnings;
+   private Double shareholdersFunds;
+   private Double minorityInterestsOtherEquity;
+   private Double totalEquity;
 
    private Date issueDate;
 
@@ -65,442 +64,442 @@ public class FinancialData
       this.issueDate = issueDate;
    }
 
-   public BigDecimal getAdjustedEps()
+   public Double getAdjustedEps()
    {
       return adjustedEps;
    }
 
-   public void setAdjustedEps(final BigDecimal adjustedEps)
+   public void setAdjustedEps(final Double adjustedEps)
    {
       this.adjustedEps = adjustedEps;
    }
 
-   public BigDecimal getBasicEps()
+   public Double getBasicEps()
    {
       return basicEps;
    }
 
-   public void setBasicEps(final BigDecimal basicEps)
+   public void setBasicEps(final Double basicEps)
    {
       this.basicEps = basicEps;
    }
 
-   public BigDecimal getCashAtBankAndInHand()
+   public Double getCashAtBankAndInHand()
    {
       return cashAtBankAndInHand;
    }
 
-   public void setCashAtBankAndInHand(final BigDecimal cashAtBankAndInHand)
+   public void setCashAtBankAndInHand(final Double cashAtBankAndInHand)
    {
       this.cashAtBankAndInHand = cashAtBankAndInHand;
    }
 
-   public BigDecimal getCurrentAssetInvestments()
+   public Double getCurrentAssetInvestments()
    {
       return currentAssetInvestments;
    }
 
-   public void setCurrentAssetInvestments(final BigDecimal currentAssetInvestments)
+   public void setCurrentAssetInvestments(final Double currentAssetInvestments)
    {
       this.currentAssetInvestments = currentAssetInvestments;
    }
 
-   public BigDecimal getCurrentBorrowings()
+   public Double getCurrentBorrowings()
    {
       return currentBorrowings;
    }
 
-   public void setCurrentBorrowings(final BigDecimal currentBorrowings)
+   public void setCurrentBorrowings(final Double currentBorrowings)
    {
       this.currentBorrowings = currentBorrowings;
    }
 
-   public BigDecimal getDilutedEps()
+   public Double getDilutedEps()
    {
       return dilutedEps;
    }
 
-   public void setDilutedEps(final BigDecimal dilutedEps)
+   public void setDilutedEps(final Double dilutedEps)
    {
       this.dilutedEps = dilutedEps;
    }
 
-   public BigDecimal getDividendPerShare()
+   public Double getDividendPerShare()
    {
       return dividendPerShare;
    }
 
-   public void setDividendPerShare(final BigDecimal dividendPerShare)
+   public void setDividendPerShare(final Double dividendPerShare)
    {
       this.dividendPerShare = dividendPerShare;
    }
 
-   public BigDecimal getIntangibleAssets()
+   public Double getIntangibleAssets()
    {
       return intangibleAssets;
    }
 
-   public void setIntangibleAssets(final BigDecimal intangibleAssets)
+   public void setIntangibleAssets(final Double intangibleAssets)
    {
       this.intangibleAssets = intangibleAssets;
    }
 
-   public BigDecimal getInventories()
+   public Double getInventories()
    {
       return inventories;
    }
 
-   public void setInventories(final BigDecimal inventories)
+   public void setInventories(final Double inventories)
    {
       this.inventories = inventories;
    }
 
-   public BigDecimal getInvestmentProperties()
+   public Double getInvestmentProperties()
    {
       return investmentProperties;
    }
 
-   public void setInvestmentProperties(final BigDecimal investmentProperties)
+   public void setInvestmentProperties(final Double investmentProperties)
    {
       this.investmentProperties = investmentProperties;
    }
 
-   public BigDecimal getInvestments()
+   public Double getInvestments()
    {
       return investments;
    }
 
-   public void setInvestments(final BigDecimal investments)
+   public void setInvestments(final Double investments)
    {
       this.investments = investments;
    }
 
-   public BigDecimal getMinorityInterestsOtherEquity()
+   public Double getMinorityInterestsOtherEquity()
    {
       return minorityInterestsOtherEquity;
    }
 
-   public void setMinorityInterestsOtherEquity(final BigDecimal minorityInterestsOtherEquity)
+   public void setMinorityInterestsOtherEquity(final Double minorityInterestsOtherEquity)
    {
       this.minorityInterestsOtherEquity = minorityInterestsOtherEquity;
    }
 
-   public BigDecimal getMinorityInterestsOtherEquities()
+   public Double getMinorityInterestsOtherEquities()
    {
       return minorityInterestsOtherEquities;
    }
 
-   public void setMinorityInterestsOtherEquities(final BigDecimal minorityInterestsOtherEquities)
+   public void setMinorityInterestsOtherEquities(final Double minorityInterestsOtherEquities)
    {
       this.minorityInterestsOtherEquities = minorityInterestsOtherEquities;
    }
 
-   public BigDecimal getNetAssets()
+   public Double getNetAssets()
    {
       return netAssets;
    }
 
-   public void setNetAssets(final BigDecimal netAssets)
+   public void setNetAssets(final Double netAssets)
    {
       this.netAssets = netAssets;
    }
 
-   public BigDecimal getNetCurrentAssets()
+   public Double getNetCurrentAssets()
    {
       return netCurrentAssets;
    }
 
-   public void setNetCurrentAssets(final BigDecimal netCurrentAssets)
+   public void setNetCurrentAssets(final Double netCurrentAssets)
    {
       this.netCurrentAssets = netCurrentAssets;
    }
 
-   public BigDecimal getNetInterest()
+   public Double getNetInterest()
    {
       return netInterest;
    }
 
-   public void setNetInterest(final BigDecimal netInterest)
+   public void setNetInterest(final Double netInterest)
    {
       this.netInterest = netInterest;
    }
 
-   public BigDecimal getNonCurrentBorrowings()
+   public Double getNonCurrentBorrowings()
    {
       return nonCurrentBorrowings;
    }
 
-   public void setNonCurrentBorrowings(final BigDecimal nonCurrentBorrowings)
+   public void setNonCurrentBorrowings(final Double nonCurrentBorrowings)
    {
       this.nonCurrentBorrowings = nonCurrentBorrowings;
    }
 
-   public BigDecimal getOperatingProfit()
+   public Double getOperatingProfit()
    {
       return operatingProfit;
    }
 
-   public void setOperatingProfit(final BigDecimal operatingProfit)
+   public void setOperatingProfit(final Double operatingProfit)
    {
       this.operatingProfit = operatingProfit;
    }
 
-   public BigDecimal getOtherAssets()
+   public Double getOtherAssets()
    {
       return otherAssets;
    }
 
-   public void setOtherAssets(final BigDecimal otherAssets)
+   public void setOtherAssets(final Double otherAssets)
    {
       this.otherAssets = otherAssets;
    }
 
-   public BigDecimal getOtherCurrentAssets()
+   public Double getOtherCurrentAssets()
    {
       return otherCurrentAssets;
    }
 
-   public void setOtherCurrentAssets(final BigDecimal otherCurrentAssets)
+   public void setOtherCurrentAssets(final Double otherCurrentAssets)
    {
       this.otherCurrentAssets = otherCurrentAssets;
    }
 
-   public BigDecimal getOtherCurrentLiabilities()
+   public Double getOtherCurrentLiabilities()
    {
       return otherCurrentLiabilities;
    }
 
-   public void setOtherCurrentLiabilities(final BigDecimal otherCurrentLiabilities)
+   public void setOtherCurrentLiabilities(final Double otherCurrentLiabilities)
    {
       this.otherCurrentLiabilities = otherCurrentLiabilities;
    }
 
-   public BigDecimal getOtherFinancialAssets()
+   public Double getOtherFinancialAssets()
    {
       return otherFinancialAssets;
    }
 
-   public void setOtherFinancialAssets(final BigDecimal otherFinancialAssets)
+   public void setOtherFinancialAssets(final Double otherFinancialAssets)
    {
       this.otherFinancialAssets = otherFinancialAssets;
    }
 
-   public BigDecimal getOtherLiabilities()
+   public Double getOtherLiabilities()
    {
       return otherLiabilities;
    }
 
-   public void setOtherLiabilities(final BigDecimal otherLiabilities)
+   public void setOtherLiabilities(final Double otherLiabilities)
    {
       this.otherLiabilities = otherLiabilities;
    }
 
-   public BigDecimal getOtherNonCurrentAssets()
+   public Double getOtherNonCurrentAssets()
    {
       return otherNonCurrentAssets;
    }
 
-   public void setOtherNonCurrentAssets(final BigDecimal otherNonCurrentAssets)
+   public void setOtherNonCurrentAssets(final Double otherNonCurrentAssets)
    {
       this.otherNonCurrentAssets = otherNonCurrentAssets;
    }
 
-   public BigDecimal getOtherNonCurrentLiabilities()
+   public Double getOtherNonCurrentLiabilities()
    {
       return otherNonCurrentLiabilities;
    }
 
-   public void setOtherNonCurrentLiabilities(final BigDecimal otherNonCurrentLiabilities)
+   public void setOtherNonCurrentLiabilities(final Double otherNonCurrentLiabilities)
    {
       this.otherNonCurrentLiabilities = otherNonCurrentLiabilities;
    }
 
-   public BigDecimal getOtherReserves()
+   public Double getOtherReserves()
    {
       return otherReserves;
    }
 
-   public void setOtherReserves(final BigDecimal otherReserves)
+   public void setOtherReserves(final Double otherReserves)
    {
       this.otherReserves = otherReserves;
    }
 
-   public BigDecimal getProfitAfterTaxFromContinuingOperations()
+   public Double getProfitAfterTaxFromContinuingOperations()
    {
       return profitAfterTaxFromContinuingOperations;
    }
 
-   public void setProfitAfterTaxFromContinuingOperations(final BigDecimal profitAfterTaxFromContinuingOperations)
+   public void setProfitAfterTaxFromContinuingOperations(final Double profitAfterTaxFromContinuingOperations)
    {
       this.profitAfterTaxFromContinuingOperations = profitAfterTaxFromContinuingOperations;
    }
 
-   public BigDecimal getProfitAfterTaxFromDiscontinuingOperations()
+   public Double getProfitAfterTaxFromDiscontinuingOperations()
    {
       return profitAfterTaxFromDiscontinuingOperations;
    }
 
-   public void setProfitAfterTaxFromDiscontinuingOperations(final BigDecimal profitAfterTaxFromDiscontinuingOperations)
+   public void setProfitAfterTaxFromDiscontinuingOperations(final Double profitAfterTaxFromDiscontinuingOperations)
    {
       this.profitAfterTaxFromDiscontinuingOperations = profitAfterTaxFromDiscontinuingOperations;
    }
 
-   public BigDecimal getProfitAttributableToEquityHoldersOfParentCompany()
+   public Double getProfitAttributableToEquityHoldersOfParentCompany()
    {
       return profitAttributableToEquityHoldersOfParentCompany;
    }
 
-   public void setProfitAttributableToEquityHoldersOfParentCompany(final BigDecimal profitAttributableToEquityHoldersOfParentCompany)
+   public void setProfitAttributableToEquityHoldersOfParentCompany(final Double profitAttributableToEquityHoldersOfParentCompany)
    {
       this.profitAttributableToEquityHoldersOfParentCompany = profitAttributableToEquityHoldersOfParentCompany;
    }
 
-   public BigDecimal getProfitBeforeTax()
+   public Double getProfitBeforeTax()
    {
       return profitBeforeTax;
    }
 
-   public void setProfitBeforeTax(final BigDecimal profitBeforeTax)
+   public void setProfitBeforeTax(final Double profitBeforeTax)
    {
       this.profitBeforeTax = profitBeforeTax;
    }
 
-   public BigDecimal getProfitForThePeriod()
+   public Double getProfitForThePeriod()
    {
       return profitForThePeriod;
    }
 
-   public void setProfitForThePeriod(final BigDecimal profitForThePeriod)
+   public void setProfitForThePeriod(final Double profitForThePeriod)
    {
       this.profitForThePeriod = profitForThePeriod;
    }
 
-   public BigDecimal getPropertyPlantAndEquipment()
+   public Double getPropertyPlantAndEquipment()
    {
       return propertyPlantAndEquipment;
    }
 
-   public void setPropertyPlantAndEquipment(final BigDecimal propertyPlantAndEquipment)
+   public void setPropertyPlantAndEquipment(final Double propertyPlantAndEquipment)
    {
       this.propertyPlantAndEquipment = propertyPlantAndEquipment;
    }
 
-   public BigDecimal getProvisions()
+   public Double getProvisions()
    {
       return provisions;
    }
 
-   public void setProvisions(final BigDecimal provisions)
+   public void setProvisions(final Double provisions)
    {
       this.provisions = provisions;
    }
 
-   public BigDecimal getRetainedEarnings()
+   public Double getRetainedEarnings()
    {
       return retainedEarnings;
    }
 
-   public void setRetainedEarnings(final BigDecimal retainedEarnings)
+   public void setRetainedEarnings(final Double retainedEarnings)
    {
       this.retainedEarnings = retainedEarnings;
    }
 
-   public BigDecimal getRetainedProfit()
+   public Double getRetainedProfit()
    {
       return retainedProfit;
    }
 
-   public void setRetainedProfit(final BigDecimal retainedProfit)
+   public void setRetainedProfit(final Double retainedProfit)
    {
       this.retainedProfit = retainedProfit;
    }
 
-   public BigDecimal getRevenue()
+   public Double getRevenue()
    {
       return revenue;
    }
 
-   public void setRevenue(final BigDecimal revenue)
+   public void setRevenue(final Double revenue)
    {
       this.revenue = revenue;
    }
 
-   public BigDecimal getShareCapital()
+   public Double getShareCapital()
    {
       return shareCapital;
    }
 
-   public void setShareCapital(final BigDecimal shareCapital)
+   public void setShareCapital(final Double shareCapital)
    {
       this.shareCapital = shareCapital;
    }
 
-   public BigDecimal getShareholdersFunds()
+   public Double getShareholdersFunds()
    {
       return shareholdersFunds;
    }
 
-   public void setShareholdersFunds(final BigDecimal shareholdersFunds)
+   public void setShareholdersFunds(final Double shareholdersFunds)
    {
       this.shareholdersFunds = shareholdersFunds;
    }
 
-   public BigDecimal getSharePremiumAccount()
+   public Double getSharePremiumAccount()
    {
       return sharePremiumAccount;
    }
 
-   public void setSharePremiumAccount(final BigDecimal sharePremiumAccount)
+   public void setSharePremiumAccount(final Double sharePremiumAccount)
    {
       this.sharePremiumAccount = sharePremiumAccount;
    }
 
-   public BigDecimal getTotalAssets()
+   public Double getTotalAssets()
    {
       return totalAssets;
    }
 
-   public void setTotalAssets(final BigDecimal totalAssets)
+   public void setTotalAssets(final Double totalAssets)
    {
       this.totalAssets = totalAssets;
    }
 
-   public BigDecimal getTotalDividendPaid()
+   public Double getTotalDividendPaid()
    {
       return totalDividendPaid;
    }
 
-   public void setTotalDividendPaid(final BigDecimal totalDividendPaid)
+   public void setTotalDividendPaid(final Double totalDividendPaid)
    {
       this.totalDividendPaid = totalDividendPaid;
    }
 
-   public BigDecimal getTotalEquity()
+   public Double getTotalEquity()
    {
       return totalEquity;
    }
 
-   public void setTotalEquity(final BigDecimal totalEquity)
+   public void setTotalEquity(final Double totalEquity)
    {
       this.totalEquity = totalEquity;
    }
 
-   public BigDecimal getTotalLiabilities()
+   public Double getTotalLiabilities()
    {
       return totalLiabilities;
    }
 
-   public void setTotalLiabilities(final BigDecimal totalLiabilities)
+   public void setTotalLiabilities(final Double totalLiabilities)
    {
       this.totalLiabilities = totalLiabilities;
    }
 
-   public BigDecimal getTradeAndOtherReceivables()
+   public Double getTradeAndOtherReceivables()
    {
       return tradeAndOtherReceivables;
    }
 
-   public void setTradeAndOtherReceivables(final BigDecimal tradeAndOtherReceivables)
+   public void setTradeAndOtherReceivables(final Double tradeAndOtherReceivables)
    {
       this.tradeAndOtherReceivables = tradeAndOtherReceivables;
    }

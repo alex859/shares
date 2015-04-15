@@ -2,7 +2,6 @@ package org.alex859.shares.model;
 
 import com.google.common.base.MoreObjects;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -20,11 +19,11 @@ public class ShareData
     private String url;
     private String isin;
     private String epic;
-    private BigDecimal price;
+    private Double price;
     private String currency;
     private String category;
     private String subCategory;
-
+    private FinancialData lastFinancialData;
     private List<FinancialData> financialData;
 
     public String getSymbol()
@@ -107,12 +106,12 @@ public class ShareData
         this.financialData = financialData;
     }
 
-    public BigDecimal getPrice()
+    public Double getPrice()
     {
         return price;
     }
 
-    public void setPrice(final BigDecimal price)
+    public void setPrice(final Double price)
     {
         this.price = price;
     }
@@ -135,6 +134,16 @@ public class ShareData
     public void setSubCategory(final String subCategory)
     {
         this.subCategory = subCategory;
+    }
+
+    public FinancialData getLastFinancialData()
+    {
+        return lastFinancialData;
+    }
+
+    public void setLastFinancialData(final FinancialData lastFinancialData)
+    {
+        this.lastFinancialData = lastFinancialData;
     }
 
     @Override

@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.format.datetime.DateFormatter;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
@@ -117,7 +118,7 @@ public class FinancialProcessor extends AbstractHtmlProcessor
                             .forEach(td ->
                             {
 
-                               final BigDecimal value = getValue(td.text());
+                               final Double value = getValue(td.text());
                                try
                                {
                                   BeanUtils.setProperty(financialData.get(dateIndex[0]), fieldToUpdate.getName(), value);
@@ -133,6 +134,10 @@ public class FinancialProcessor extends AbstractHtmlProcessor
                  });
 
          shareData.setFinancialData(financialData);
+         if (!CollectionUtils.isEmpty(financialData))
+         {
+            shareData.setLastFinancialData(financialData.get(0));
+         }
       }
    }
 
@@ -162,13 +167,13 @@ public class FinancialProcessor extends AbstractHtmlProcessor
       return result;
    }
 
-   protected BigDecimal getValue(final String str)
+   protected Double getValue(final String str)
    {
       final Matcher matcher = NEGATIVE_VALUE_PATTERN.matcher(str);
       if (matcher.find())
       {
-         final BigDecimal result = getPositiveValue(matcher.group(1));
-         return result != null ? result.negate() : null;
+         final Double result = getPositiveValue(matcher.group(1));
+         return result != null ? -1 * result : null;
       }
       else
       {

@@ -25,7 +25,7 @@ public class MainPageProcessor extends AbstractHtmlProcessor
    protected void internalProcess(final Document doc, final ShareData shareData)
    {
       final String priceStr = doc.select(PRICE_CSS).text();
-      final BigDecimal price = getPositiveValue(priceStr);
+      final Double price = getPositiveValue(priceStr);
       LOGGER.debug("Setting price {}", price);
       shareData.setPrice(price);
    }

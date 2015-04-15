@@ -64,7 +64,7 @@ public abstract class AbstractHtmlProcessor implements ShareDataProcessor
       this.suffix = suffix;
    }
 
-   protected BigDecimal getPositiveValue(String str)
+   protected Double getPositiveValue(String str)
    {
       BigDecimal multiplier = ONE_MILLION;
       if (str == null || str.isEmpty() || str.contains("n/a"))
@@ -84,7 +84,7 @@ public abstract class AbstractHtmlProcessor implements ShareDataProcessor
       }
       try
       {
-         return new BigDecimal(NumberFormat.getInstance().parse(str).toString()).multiply(multiplier);
+         return new BigDecimal(NumberFormat.getInstance().parse(str).toString()).multiply(multiplier).doubleValue();
       }
       catch (final Exception e)
       {
